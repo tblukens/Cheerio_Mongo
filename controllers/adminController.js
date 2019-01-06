@@ -2,18 +2,13 @@ const db = require('../models');
 
 module.exports = {
   adminShowAll: function(req, res) {
-    db.Article.update(
+    db.Article.updateMany(
       { cleared: true, saved: false },
       { cleared: false },
-      { multi: true },
-      (err, num) => {
-        if (err) {
-          console.log(err);
-        }
-        res.send(`Updated ${num} articles.`);
-        console.log(`Updated ${num} articles.`);
-      }
-    );
+      { multi: true }
+    )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => console.log(err));
   },
   adminDeleteAll: function(req, res) {
     db.Article.deleteMany({})

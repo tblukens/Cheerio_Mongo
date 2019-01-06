@@ -20,9 +20,9 @@ export default {
   showSavedArticles: function() {
     return axios.get(`${article}saved`);
   },
-  // clearArticles: function() {
-  //   return axios.put(`${article}clear`);
-  // },
+  clearArticles: function() {
+    return axios.put(`${article}clear`);
+  },
   getSpecificArticle: function(id) {
     return axios.get(`${article}${id}`);
   },

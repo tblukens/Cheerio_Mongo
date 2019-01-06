@@ -57,7 +57,7 @@ class Articles extends Component {
   render() {
     return (
       <div className="text-center mx-auto">
-        <Nav home={true}>
+        <Nav home={true} clearClick={this.clearArticles}>
           {' '}
           <button className="btn btn-warning" onClick={this.scrapeArticles}>
             SCRAPE NEW ARTICLES!
@@ -71,7 +71,7 @@ class Articles extends Component {
           <div className="row mx-auto">{this.renderArticles()}</div>
         ) : (
           <div>
-            <h1>No articles to display.</h1>
+            <h1>No new articles to display.</h1>
             <button className="btn btn-danger" onClick={this.scrapeArticles}>
               Click to Scrape Articles
             </button>

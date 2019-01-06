@@ -30,11 +30,14 @@ function Nav(props) {
             </a>
           </li>{' '}
           <li className="nav-item">{props.children}</li>
-          {/* <li className="nav-item">
-            <button className="btn btn-warning" onClick={props.clearClick}>
+          <li className="nav-item">
+            <button
+              className="btn btn-warning"
+              onClick={() => props.clearClick()}
+            >
               CLEAR ARTICLES!
             </button>
-          </li> */}
+          </li>
         </ul>
       </div>
     </nav>

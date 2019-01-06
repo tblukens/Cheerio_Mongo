@@ -88,11 +88,10 @@ module.exports = {
     db.Article.updateMany(
       { cleared: false, saved: false },
       { cleared: true },
-      { multi: true },
-      (err, response) => {
-        console.log(`Updated ${response} articles.`);
-      }
-    );
+      { multi: true }
+    )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => console.log(err));
   },
   showSaved: function(req, res) {
     db.Article.find({ saved: true }, (err, docs) => {
