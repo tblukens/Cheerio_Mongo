@@ -21,6 +21,11 @@ module.exports = {
         res.json(err);
       });
   },
+  deleteNote: function(req, res) {
+    db.Note.findByIdAndDelete(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => console.log(err));
+  },
   showNotesDB: function(req, res) {
     db.Note.find({})
       .then(notes => {

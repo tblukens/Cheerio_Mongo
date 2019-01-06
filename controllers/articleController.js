@@ -59,12 +59,12 @@ module.exports = {
         db.Article.create(result)
           .then(function(dbArticle) {
             // View the added result in the console
-            console.log(dbArticle);
+            // console.log(dbArticle);
           })
           .catch(function(err) {
             // If an error occurred, log it
             if (err.code === 11000) {
-              console.log('Article exists already.');
+              // console.log('Article exists already.');
             } else {
               console.log(err.errmsg);
             }
@@ -85,12 +85,12 @@ module.exports = {
     });
   },
   clearNonSaved: function(req, res) {
-    db.Article.update(
+    db.Article.updateMany(
       { cleared: false, saved: false },
       { cleared: true },
       { multi: true },
-      (err, count) => {
-        console.log(`Updated ${count} articles.`);
+      (err, response) => {
+        console.log(`Updated ${response} articles.`);
       }
     );
   },
@@ -114,6 +114,11 @@ module.exports = {
         // If an error occurred, send it to the client
         res.json(err);
       });
+  },
+  removeSavedArticle: function(req, res) {
+    db.Article.findByIdAndUpdate(req.params.id, { saved: false })
+      .then(data => res.send(data))
+      .catch(err => console.log(err));
   },
   articleWithNotes: function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
