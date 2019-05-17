@@ -7,7 +7,7 @@ import ArticleNotes from './pages/ArticleNotes';
 function App() {
   return (
     <Router>
-      <div>
+      <div class="mb-4">
         <Switch>
           <Route exact path="/" component={Articles} />
           <Route path="/saved/:id" component={ArticleNotes} />

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Article = props => {
   return (
-    <div className="col mx-auto">
+    <div className="col mx-auto mb-2">
       <div className="card border" style={{ width: '18rem' }}>
         <img src={props.image} className="card-img-top" alt={props.title} />
         <div className="card-body">
